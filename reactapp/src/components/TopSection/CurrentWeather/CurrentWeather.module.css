@@ -1,0 +1,64 @@
+.Container {
+  font-family: 'Jost';
+  display: flex; /* Use flexbox for horizontal alignment */
+  align-items: flex-start; /* Align items to the top */
+  justify-content: flex-start; /* Align everything to the left */
+  gap: 5rem;
+  padding-top: 0.5rem; /* Add space between items */
+}
+
+.WeatherDetails {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: contents;
+
+}
+
+.CurrentWeather-summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width:10rem;
+  text-align: center;
+  box-sizing: border-box;
+  margin-left: 6rem;
+}
+
+.CurrentWeather-icon {
+  flex: 1; /* Allow the weather icon to take up space */
+  display: flex;
+  justify-content: center; /* Center the icon horizontally */
+  align-items: center;
+}
+
+.CurrentWeather-icon>img {
+  width: 8rem; /* Increase the width of the image */
+  height: auto; /* Maintain the aspect ratio */
+}
+
+.CurrentWeather-temperature {
+  display: flex;
+  flex-direction: row; /* Keep temperature and unit horizontally aligned */
+  align-items: center; /* Vertically center the temperature and unit */
+  font-weight: bold;
+}
+
+.CurrentWeather-temperature-value {
+  font-size: 15vh;
+  font-weight: normal;
+}
+
+.CurrentWeather-temperature-unit {
+  font-size: 7vh;
+  margin-top: -6vh;
+}
+
+.CurrentWeather-details {
+  display: grid; /* Use grid layout for two columns */
+  grid-template-columns: repeat(2, 1fr); /* Create two equal-width columns */ /* Add spacing between rows and columns */
+  flex: 1;
+  gap:1em;
+}
+

@@ -1,0 +1,34 @@
+.forecastItemValue {
+  margin-right: 2px;
+  font-size:0.8rem;
+  }
+
+.forecastItemUnit {
+    font-size: 0.5rem;
+    position: relative;
+  }
+  
+.forecastItemTemprature {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.forecastItemTempratureMax {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0.2rem;
+}
+
+.forecastItemValueMinor {
+  margin-right: 2px;
+  font-size: 0.5rem;
+  color: #666;
+}
+
+.forecastItemUnitMinor {
+  font-size: 0.5rem;
+  position: relative;
+  color: #666;
+}

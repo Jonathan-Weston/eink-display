@@ -1,0 +1,49 @@
+/* .binSummary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width:10rem;
+    text-align: center;
+    box-sizing: border-box;
+} */
+
+.binSummary {
+    font-family: 'Jost';
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    position: absolute; /* Position BinDisplay absolutely */
+    left: 1rem;
+    gap: 0.5em;
+    padding-top: 1em; 
+}
+
+/* .binImage {
+    width: 100%;
+    height: auto;
+    max-width: 8rem
+} */
+
+.binImage img {
+    width: 100%;
+    height: auto;
+    max-width: 2rem
+}
+
+.binDate {
+    font-size: 1rem; /* Adjust font size for readability */
+    color: #333; 
+}
+
+.binDateText {
+    font-weight: normal;
+}
+
+.dayBeforeBinWarning {
+    font-size: 5vh;
+    margin-top: 4.8vh;
+    margin-left: 4px;
+    color:red;
+}

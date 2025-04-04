@@ -1,0 +1,24 @@
+.middle {
+  display: flex; /* Use Flexbox for horizontal layout */
+  justify-content: space-between; /* Space out the elements */
+  align-items: center; /* Vertically align items */
+  box-sizing: border-box;
+}
+
+.currentWeather {
+  display: flex; /* Use Flexbox for horizontal layout */
+  flex-direction: row; /* Align items horizontally */
+  align-items: center; /* Vertically align items */
+  justify-content: center; /* Center the content */
+  gap: 2rem; /* Add spacing between the weather icon and details */
+  width: 100%;
+  }
+  
+  /* .currentWeather>* {
+    flex-wrap: nowrap;
+    display: flex;
+    justify-content: center;
+    padding-left:2em;
+  } */
+  
+  

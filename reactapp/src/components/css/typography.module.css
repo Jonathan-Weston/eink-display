@@ -1,0 +1,60 @@
+/* Typography */
+
+html {
+    font-family: 'Jost';
+    /*
+     * Base font-size. Ideally, everything else scales appropriately when this is changed.
+     * This is large because we render the page as a PNG. The device has quite high DPI.
+     * @see: https://dpi.lv/
+     */
+    font-size: 36px;
+  }
+  
+  .Container {
+    /* Default to bold */
+    font-weight: bold;
+  }
+  
+  .text {
+    font-size: var(--text-size);
+  }
+  
+  .textxxs {
+    font-size: var(--text-size-xxs);
+  }
+  
+  .textxs {
+    font-size: var(--text-size-xs);
+  }
+  
+  .texts {
+    font-size: var(--text-size-s);
+  }
+  
+  .textm {
+    font-size: var(--text-size-m);
+  }
+  
+  .textl {
+    font-size: var(--text-size-l);
+  }
+  
+  .textxl {
+    font-size: var(--text-size-xl);
+  }
+  
+  .textxxl {
+    font-size: var(--text-size-xxl);
+  }
+  
+  .textxxxl {
+    font-size: var(--text-size-xxxl);
+  }
+  
+  h1 {
+    font-size: var(--text-size-xxl)
+  }
+  
+  h2 {
+    font-size: var(--text-size-xl);
+  }

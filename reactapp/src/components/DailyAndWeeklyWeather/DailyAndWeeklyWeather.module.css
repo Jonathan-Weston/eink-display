@@ -1,0 +1,70 @@
+.bottom {
+  font-family: 'Jost';
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Center the content horizontally */
+  width: 100%; /* Make the container span the full width */
+  box-sizing: border-box; /* Include padding in width calculations */
+}
+
+.forecast {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* Allow items to wrap to the next row if needed */
+  justify-content: space-between; /* Distribute items evenly */
+  gap: 1rem; /* Add spacing between items */
+  width: 100%; /* Make the forecast section span the full width */
+  padding: 1rem; /* Add padding for spacing */
+  box-sizing: border-box;
+}
+
+.forecastToday {
+  background: none;
+  flex: 1 1 100%; /* Allow it to take full width on smaller screens */
+  max-width: 20rem; /* Limit the maximum width */
+  text-align: center; /* Center-align the content */
+}
+
+.forecastTodayInfo {
+  font-size: var(--text-size-xl);
+  width: 100%; /* Make it responsive */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center-align the content */
+}
+
+.forecastTodayMinMaxTemperature {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Distribute min and max temperatures */
+  font-size: var(--text-size);
+  width: 100%; /* Make it responsive */
+  white-space: nowrap;
+}
+
+.forecastTodayMinMaxTemperature > * {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center-align the temperature values */
+}
+
+.forecastWeekInfo {
+  font-size: var(--text-size-xl);
+  margin-right: 1rem; /* Use relative units for spacing */
+  text-align: center; /* Center-align the content */
+}
+
+.forecastItems {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0rem, 0.2fr));
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.forecastItems > * {
+  flex: 1;
+  margin: 0; /* Remove unnecessary margins */
+  text-align: center; /* Center-align the content */
+}

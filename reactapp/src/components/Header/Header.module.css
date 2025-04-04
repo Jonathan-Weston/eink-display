@@ -1,0 +1,44 @@
+/* Top section */
+
+.top {
+  display: flex; /* Use Flexbox for horizontal layout */
+  align-items: center; /* Vertically align items */
+  justify-content: space-between; /* Add spacing between items */
+  padding-bottom: 1rem; /* Add padding around the header */
+  position: relative; /* Position relative for absolute children */
+}
+
+.headerContent {
+  display: flex;
+  flex-direction: column; /* Stack location and date vertically */
+  align-items: flex-start; /* Align text to the left */
+}
+
+.locationDate {
+  font-family: 'Jost';
+  display: flex;
+  flex-direction: column; /* Stack location and date vertically */
+  align-items: center; /* Center-align horizontally */
+  justify-content: center; /* Center-align vertically */
+  text-align: center; /* Center-align text */
+  flex: 1;
+  gap:0.2em; /* Stack location and date vertically */
+}
+
+.location {
+  font-size: 1.2rem; /* Adjust font size */
+  font-weight: bold; /* Make the location bold */
+  max-height: 0.1em;
+  margin-bottom: 0.8m;
+  margin-top:unset;
+}
+
+.date {
+  font-size: 1rem; /* Adjust font size for the date */
+  color: #666;
+  font-weight: normal; /* Optional: Set a lighter color for the date */
+  max-height: 0.1em;
+  margin: unset;
+}
+
+  

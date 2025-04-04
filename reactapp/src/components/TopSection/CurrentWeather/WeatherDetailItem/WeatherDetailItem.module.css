@@ -1,0 +1,67 @@
+.WeatherDetails {
+  display: grid; /* Use grid layout for details */
+  grid-template-columns: repeat(2, 1fr); /* Create two columns */
+  gap: 1rem; /* Add spacing between grid items */
+  text-align: left;
+  }
+  
+.WeatherDetails-item {
+  display: flex; /* Use Flexbox for horizontal alignment */
+  align-items: center; /* Vertically align items */
+  justify-content: flex-start; /* Align everything to the left */
+  gap: 0.5rem; 
+}
+  
+.WeatherDetails-item p {
+  font-size: 0.4em;
+  margin: unset;
+  color: #666;
+}
+  
+.WeatherDetails-item-content {
+  display: flex; /* Use Flexbox to align icon and value side by side */
+  align-items: center; /* Vertically align the icon and value */
+  justify-content: flex-start; /* Align content (icon and text) to the left */
+  gap: 0.5rem; /* Add spacing between the icon and the value */
+  width: 100%; /* Add spacing between the icon and the value */
+}
+  
+.WeatherDetails-item-icon-container {
+  width: 2rem; /* Set a fixed width for icons */
+  height: 1rem; /* Set a fixed height for icons */
+  display: flex;
+  justify-content: flex-start; /* Align icon to the left */
+  align-items: center;
+}
+
+.WeatherDetails-item-icon-container img {
+  width: 2rem; /* Set a fixed width for the image */
+  height: auto;
+}
+  
+.WeatherDetails-item-icon {
+  width: 1rem; /* Set a fixed width for icons */
+  height: 1rem;
+}
+
+.WeatherDetails-item-text {
+  display: flex;
+  flex-direction: column; /* Stack label and value vertically */
+  align-items: flex-start;
+}
+
+.WeatherDetails-item-measurement {
+  display: flex;
+}
+  
+.WeatherDetails-item-value {
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: left;
+}
+  
+.WeatherDetails-item-unit {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: left;
+}
