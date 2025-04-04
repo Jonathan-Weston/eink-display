@@ -26,16 +26,29 @@ jobs:
           REACT_APP_API_KEY: ${{ secrets.REACT_API_KEY }}
         run: cd reactapp && npm run build
 
-      - name: Copy files to Raspberry Pi
+      
+      - name: Debug SSH connection
         env:
-          REACT_APP_API_KEY: ${{ secrets.REACT_API_KEY }}
-          SSH_PRIVATE_KEY: ${{ secrets.PI_SSH_KEY }}
+          SSH_KEY: ${{ secrets.PI_SSH_KEY }}
           PI_HOST: ${{ secrets.PI_HOST }}
           PI_USER: ${{ secrets.PI_USER }}
         run: |
           mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+          echo "$SSH_KEY" > ~/.ssh/id_rsa.pub
+          chmod 600 ~/.ssh/id_rsa.pub
+          echo -e "Host *\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+          ssh -vvv ${PI_USER}@${PI_HOST} "echo 'SSH connection successful'"
+
+      - name: Copy files to Raspberry Pi
+        env:
+          REACT_APP_API_KEY: ${{ secrets.REACT_API_KEY }}
+          SSH_KEY: ${{ secrets.PI_SSH_KEY }}
+          PI_HOST: ${{ secrets.PI_HOST }}
+          PI_USER: ${{ secrets.PI_USER }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/id_rsa.pub
+          chmod 600 ~/.ssh/id_rsa.pub
 
           # Skip host key checking (or optionally add known_hosts manually)
           echo -e "Host *\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
