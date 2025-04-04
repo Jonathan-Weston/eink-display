@@ -5,18 +5,6 @@ on:
     branches:
       - main
 
-# jobs:
-#   build-and-deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: SSH into Raspberry Pi
-#         env:
-#           SSH_KEY: ${{ secrets.PI_SSH_KEY }}
-#           PI_HOST: ${{ secrets.PI_HOST }}
-#           PI_USER: ${{ secrets.PI_USER }}
-#         run: |
-#           ssh -o StrictHostKeyChecking=no -i "${{ secrets.PI_SSH_KEY }}" jonathanweston@192.168.1.82 "echo 'Hello from GitHub Actions!'"      
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
