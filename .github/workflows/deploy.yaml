@@ -8,53 +8,65 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: cd reactapp && npm install
-
-      - name: Build project
+      - name: SSH into Raspberry Pi
         env:
-          REACT_APP_API_KEY: ${{ secrets.REACT_API_KEY }}
-        run: cd reactapp && npm run build
+          SSH_KEY: ${{ secrets.PI_SSH_KEY }}
+          PI_HOST: ${{ secrets.PI_HOST }}
+          PI_USER: ${{ secrets.PI_USER }}
+        run: |
+          ssh -o StrictHostKeyChecking=no -i "${{ secrets.PI_SSH_KEY }}" jonathanweston@192.168.1.82 "echo 'Hello from GitHub Actions!'"      
+
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v3
+
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: '18'
+
+#       - name: Install dependencies
+#         run: cd reactapp && npm install
+
+#       - name: Build project
+#         env:
+#           REACT_APP_API_KEY: ${{ secrets.REACT_API_KEY }}
+#         run: cd reactapp && npm run build
 
       
-      - name: Debug SSH connection
-        env:
-          SSH_KEY: ${{ secrets.PI_SSH_KEY }}
-          PI_HOST: ${{ secrets.PI_HOST }}
-          PI_USER: ${{ secrets.PI_USER }}
-        run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_KEY" > ~/.ssh/id_rsa.pub
-          chmod 600 ~/.ssh/id_rsa.pub
-          echo -e "Host *\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
-          ssh -vvv ${PI_USER}@${PI_HOST} "echo 'SSH connection successful'"
+#       - name: Debug SSH connection
+#         env:
+#           SSH_KEY: ${{ secrets.PI_SSH_KEY }}
+#           PI_HOST: ${{ secrets.PI_HOST }}
+#           PI_USER: ${{ secrets.PI_USER }}
+#         run: |
+#           mkdir -p ~/.ssh
+#           echo "$SSH_KEY" > ~/.ssh/id_rsa
+#           chmod 600 ~/.ssh/id_rsa
+#           echo -e "Host *\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+#           ssh -vvv ${PI_USER}@${PI_HOST} "echo 'SSH connection successful'"
 
-      - name: Copy files to Raspberry Pi
-        env:
-          REACT_APP_API_KEY: ${{ secrets.REACT_API_KEY }}
-          SSH_KEY: ${{ secrets.PI_SSH_KEY }}
-          PI_HOST: ${{ secrets.PI_HOST }}
-          PI_USER: ${{ secrets.PI_USER }}
-        run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_KEY" > ~/.ssh/id_rsa.pub
-          chmod 600 ~/.ssh/id_rsa.pub
+#       - name: Copy files to Raspberry Pi
+#         env:
+#           REACT_APP_API_KEY: ${{ secrets.REACT_API_KEY }}
+#           SSH_KEY: ${{ secrets.PI_SSH_KEY }}
+#           PI_HOST: ${{ secrets.PI_HOST }}
+#           PI_USER: ${{ secrets.PI_USER }}
+#         run: |
+#           mkdir -p ~/.ssh
+#           echo "$SSH_KEY" > ~/.ssh/id_rsa
+#           chmod 600 ~/.ssh/id_rsa
 
-          # Skip host key checking (or optionally add known_hosts manually)
-          echo -e "Host *\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+#           # Skip host key checking (or optionally add known_hosts manually)
+#           echo -e "Host *\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
 
-          # Rsync the build folder
-          rsync -avz --delete ./build/ ${PI_USER}@${PI_HOST}:~/pi/reactapp/build/
+#           # Rsync the build folder
+#           rsync -avz --delete ./build/ ${PI_USER}@${PI_HOST}:~/pi/reactapp/build/
 
-          # Rsync other folders (exclude .git and build if needed)
-          rsync -avz --exclude build --exclude .git --exclude reactapp ./ ${PI_USER}@${PI_HOST}:~/pi
+#           # Rsync other folders (exclude .git and build if needed)
+#           rsync -avz --exclude build --exclude .git --exclude reactapp ./ ${PI_USER}@${PI_HOST}:~/pi
