@@ -8,7 +8,7 @@ export interface ForecastItemValueProps {
 }
 
 export const ForecastItemValue = ({value, unit, minorText, isMaxTemp}: ForecastItemValueProps) => 
-    <div className={isMaxTemp ? styles. forecastItemTempratureMax : styles.forecastItemTemprature}>
+    <div className={isMaxTemp ? styles.forecastItemTempratureMax : styles.forecastItemTemprature}>
         <span className={minorText ? styles.forecastItemValueMinor : styles.forecastItemValue}>{value}</span>
         <span className={minorText ? styles.forecastItemUnitMinor : styles.forecastItemUnit}>{unit}</span>
     </div>

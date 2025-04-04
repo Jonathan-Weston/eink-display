@@ -33,7 +33,7 @@ const HourlyTemperatureChart = () => {
     };
 
     fetchWeatherData();
-  }, []);
+  }, [API_KEY]);
 
   useEffect(() => {
     if (!hourlyForecast || hourlyForecast.length === 0) return;
