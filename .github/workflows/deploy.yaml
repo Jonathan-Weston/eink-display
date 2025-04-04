@@ -19,10 +19,10 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install
+        run: cd reactapp && npm install
 
       - name: Build project
-        run: npm run build
+        run: cd reactapp && npm run build
 
       - name: Copy files to Raspberry Pi
         env:
