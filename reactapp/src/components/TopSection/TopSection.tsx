@@ -1,4 +1,3 @@
-import BinDisplay from "../Header/BinDisplay/BinDisplay";
 import CurrentWeather from "./CurrentWeather/CurrentWeather";
 import styles from './TopSection.module.css';
 

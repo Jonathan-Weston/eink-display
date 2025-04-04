@@ -22,10 +22,13 @@ jobs:
         run: cd reactapp && npm install
 
       - name: Build project
+        env:
+          REACT_APP_API_KEY: ${{ secrets.REACT_API_KEY }}
         run: cd reactapp && npm run build
 
       - name: Copy files to Raspberry Pi
         env:
+          REACT_APP_API_KEY: ${{ secrets.REACT_API_KEY }}
           SSH_PRIVATE_KEY: ${{ secrets.PI_SSH_KEY }}
           PI_HOST: ${{ secrets.PI_HOST }}
           PI_USER: ${{ secrets.PI_USER }}

@@ -6,7 +6,6 @@ import MainBody from './components/TopSection/TopSection';
 import Header from './components/Header/Header';
 import DailyAndWeeklyWeather from './components/DailyAndWeeklyWeather/DailyAndWeeklyWeather';
 import HourlyWeather from './components/HourlyWeather/HourlyWeather';
-import Test from './components/HourlyWeather/Test';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

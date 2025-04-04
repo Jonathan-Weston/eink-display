@@ -115,7 +115,7 @@ export const CurrentWeather: React.FC = () => {
           <WeatherDetailItem
             label="Sunset"
             value={weather?.forecast.forecastday[0].astro.sunset || ''}
-            icon={sunRiseIcon}
+            icon={sunSetIcon}
             altText='Sunset Icon'
           />  
           <WeatherDetailItem
