@@ -26,27 +26,43 @@ jobs:
           REACT_APP_API_KEY: ${{ secrets.REACT_API_KEY }}
         run: cd reactapp && npm run build
 
-      
-      - name: SSH connection
-        env:
-          SSH_KEY: ${{ secrets.PI_SSH_KEY }}
-          PI_HOST: ${{ secrets.PI_HOST }}
-          PI_USER: ${{ secrets.PI_USER }}
-        run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_KEY" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H "${{ secrets.PI_HOST }}" >> ~/.ssh/known_hosts
+      - name: Copy build to Raspberry Pi
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.PI_HOST }}
+          username: ${{ secrets.PI_USER }}
+          key: ${{ secrets.PI_SSH_KEY }}
+          source: "reactapp/build/*"
+          target: "~/pi/reactapp/build"
 
-      - name: Copy files to Raspberry Pi
-        env:
-          REACT_APP_API_KEY: ${{ secrets.REACT_API_KEY }}
-          SSH_KEY: ${{ secrets.PI_SSH_KEY }}
-          PI_HOST: ${{ secrets.PI_HOST }}
-          PI_USER: ${{ secrets.PI_USER }}
-        run: |
-          # Rsync the build folder
-          rsync -avz --delete ./build/ ${PI_USER}@${PI_HOST}:~/pi/reactapp/build/
+      - name: Copy epaper to Raspberry Pi
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.PI_HOST }}
+          username: ${{ secrets.PI_USER }}
+          key: ${{ secrets.PI_SSH_KEY }}
+          source: "epaper/*"
+          target: "~/pi/epaper"
 
-          # Rsync other folders (exclude .git and build if needed)
-          rsync -avz --exclude build --exclude .git --exclude reactapp ./ ${PI_USER}@${PI_HOST}:~/pi
+      - name: Copy scraping to Raspberry Pi
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.PI_HOST }}
+          username: ${{ secrets.PI_USER }}
+          key: ${{ secrets.PI_SSH_KEY }}
+          source: "reactapp/scraping/*"
+          target: "~/pi/reactapp/scraping"
+
+      - name: Deploy app or restart service on Pi
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.PI_HOST }}
+          username: ${{ secrets.PI_USER }}
+          key: ${{ secrets.PI_SSH_KEY }}
+          script: |
+            echo "Deploying on Raspberry Pi..."
+            chmod +x ~/pi/epaper/start-servers.sh
+            chmod +x ~/pi/epaper/update-screen.sh
+            bash ~/pi/epaper/start-servers.sh
+            bash ~/pi/epaper/update-screen.sh
+            echo "Deployment completed."
