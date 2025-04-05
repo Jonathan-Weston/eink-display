@@ -32,6 +32,7 @@ jobs:
           host: ${{ secrets.PI_HOST }}
           username: ${{ secrets.PI_USER }}
           key: ${{ secrets.PI_SSH_KEY }}
+          port: ${{ secrets.PI_SSH_PORT }}
           source: "reactapp/build/*"
           target: "~/pi/reactapp/build"
 
@@ -41,6 +42,7 @@ jobs:
           host: ${{ secrets.PI_HOST }}
           username: ${{ secrets.PI_USER }}
           key: ${{ secrets.PI_SSH_KEY }}
+          port: ${{ secrets.PI_SSH_PORT }}
           source: "epaper/*"
           target: "~/pi/epaper"
 
@@ -50,6 +52,7 @@ jobs:
           host: ${{ secrets.PI_HOST }}
           username: ${{ secrets.PI_USER }}
           key: ${{ secrets.PI_SSH_KEY }}
+          port: ${{ secrets.PI_SSH_PORT }}
           source: "reactapp/scraping/*"
           target: "~/pi/reactapp/scraping"
 
@@ -59,6 +62,7 @@ jobs:
           host: ${{ secrets.PI_HOST }}
           username: ${{ secrets.PI_USER }}
           key: ${{ secrets.PI_SSH_KEY }}
+          port: ${{ secrets.PI_SSH_PORT }}
           script: |
             echo "Deploying on Raspberry Pi..."
             chmod +x ~/pi/epaper/start-servers.sh
