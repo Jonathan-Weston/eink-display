@@ -25,6 +25,11 @@ jobs:
         env:
           REACT_APP_API_KEY: ${{ secrets.REACT_API_KEY }}
         run: cd reactapp && npm run build
+      
+      - name: Test SSH Connection
+        run: |
+          ssh -i ${{ secrets.PI_SSH_KEY }} -o StrictHostKeyChecking=no -p ${{ secrets.PI_SSH_PORT }} ${{ secrets.PI_USER }}@${{ secrets.PI_HOST }} 'echo "SSH Connection Successful"'
+        continue-on-error: true
 
       - name: Copy build to Raspberry Pi
         uses: appleboy/scp-action@v0.1.4
