@@ -18,12 +18,12 @@ source ~/pimoroni/bin/activate
 echo "Starting first script..." | tee -a $LOGFILE
 
 # Run the first Python script and wait for completion
-python3 capture-screenshot.py >> $LOGFILE 2>&1
+python3 capture-screenshot.py
 
 echo "First script completed. Starting second script..." | tee -a $LOGFILE
 
 # Run the second Python script after the first one finishes
-python3 display-image.py >> $LOGFILE 2>&1
+python3 display-image.py
 
 echo "Second script completed." | tee -a $LOGFILE
 echo "Stopping servers..." | tee -a $LOGFILE

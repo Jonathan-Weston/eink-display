@@ -26,12 +26,13 @@ const BinDisplay: React.FC = () => {
     const [binColor, setBinColor] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
+    const url = process.env.SCRAPE_BIN_DATE_URL || 'http://localhost:5000/scrape-bin-date';
 
     useEffect(() => {
         const fetchBinDate = async () => {
             try {
                 setLoading(true);
-                const response = await fetch('http://localhost:5000/scrape-bin-date');
+                const response = await fetch(url);
                 const data = await response.json();
     
                 if (data.dates) {

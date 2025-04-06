@@ -27,6 +27,7 @@ jobs:
       - name: Build project
         env:
           REACT_APP_API_KEY: ${{ secrets.REACT_API_KEY }}
+          SCRAPING_BIN_DATE_URL: ${{ secrets.SCRAPING_BIN_DATE_URL }}
         run: cd reactapp && npm run build
       
       - name: Copy build to Raspberry Pi
