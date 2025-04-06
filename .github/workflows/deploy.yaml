@@ -28,7 +28,7 @@ jobs:
       
       - name: Test SSH Connection
         run: |
-          ssh -i ${{ secrets.PI_SSH_KEY }} -o StrictHostKeyChecking=no -p ${{ secrets.PI_SSH_PORT }} ${{ secrets.PI_USER }}@${{ secrets.PI_HOST }} 'echo "SSH Connection Successful"'
+          ping ${{ secrets.PI_USER }}@${{ secrets.PI_HOST }}
         continue-on-error: true
 
       - name: Copy build to Raspberry Pi
