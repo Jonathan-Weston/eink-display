@@ -54,7 +54,7 @@ const BinDisplay: React.FC = () => {
         };
     
         fetchBinDate();
-    }, []);
+    }, [url]);
 
     const getBinImage = () => {
         if (binColor === 'Blue') {
