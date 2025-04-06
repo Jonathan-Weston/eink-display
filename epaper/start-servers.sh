@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOGFILE="~/pi/server_log.log"
+LOGFILE="server_log.log"
 echo "Starting servers..." | tee -a $LOGFILE
 
 # Start Node.js server
