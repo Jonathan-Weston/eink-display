@@ -49,16 +49,6 @@ jobs:
           source: "epaper/*"
           target: "~/pi/"
 
-      - name: Copy inky to epaper
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: ${{ secrets.PI_HOST }}
-          username: ${{ secrets.PI_USER }}
-          key: ${{ secrets.PI_SSH_KEY }}
-          port: ${{ secrets.PI_SSH_PORT }}
-          source: "epaper/inky/*"
-          target: "~/pi/epaper/"
-
       - name: Copy scraping to Raspberry Pi
         uses: appleboy/scp-action@v0.1.4
         with:
