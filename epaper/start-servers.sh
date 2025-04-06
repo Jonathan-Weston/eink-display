@@ -4,7 +4,7 @@ LOGFILE="~/pi/server_log.log"
 echo "Starting servers..." | tee -a $LOGFILE
 
 # Start Node.js server
-node ~/pi/reactapp/scraping/server.js &> $LOGFILE &
+node ~/pi/scraping/server.js &> $LOGFILE &
 NODE_PID=lsof -ti tcp:5000
 echo "Node server started with PID: $NODE_PID" | tee -a $LOGFILE
 
