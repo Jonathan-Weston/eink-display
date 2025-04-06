@@ -1,7 +1,7 @@
 #!/bin/bash
 
 LOGFILE="script_log.log"
-source ~/.virtualenvs/pimoroni/bin/activate
+source ~/pimoroni/bin/activate
 
 echo "Starting first script..." | tee -a $LOGFILE
 
