@@ -34,7 +34,7 @@ jobs:
           key: ${{ secrets.PI_SSH_KEY }}
           port: ${{ secrets.PI_SSH_PORT }}
           source: "reactapp/build/*"
-          target: "~/pi/reactapp/build"
+          target: "~/pi/"
 
       - name: Copy epaper to Raspberry Pi
         uses: appleboy/scp-action@v0.1.4
@@ -54,7 +54,7 @@ jobs:
           key: ${{ secrets.PI_SSH_KEY }}
           port: ${{ secrets.PI_SSH_PORT }}
           source: "scraping/*"
-          target: "~/pi/scraping"
+          target: "~/pi/"
 
       - name: Deploy app or restart service on Pi
         uses: appleboy/ssh-action@v1.0.0
