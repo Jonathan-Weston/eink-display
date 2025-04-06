@@ -44,7 +44,7 @@ jobs:
           key: ${{ secrets.PI_SSH_KEY }}
           port: ${{ secrets.PI_SSH_PORT }}
           source: "epaper/*"
-          target: "~/pi/epaper"
+          target: "~/pi/"
 
       - name: Copy scraping to Raspberry Pi
         uses: appleboy/scp-action@v0.1.4
