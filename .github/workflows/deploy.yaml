@@ -18,8 +18,11 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies
+      - name: Install dependencies for web app
         run: cd reactapp && npm install
+
+      - name: Install dependecies for scraping
+        run: cd scraping && npm install
 
       - name: Build project
         env:
