@@ -28,7 +28,7 @@ jobs:
       
       - name: Test SSH Connection
         run: |
-          ping ${{ secrets.PI_USER }}@${{ secrets.PI_HOST }}
+          ping ${{ secrets.PI_HOST }}
         continue-on-error: true
 
       - name: Copy build to Raspberry Pi
