@@ -14,10 +14,11 @@ npx http-server &> $LOGFILE &
 HTTP_SERVER_PID=sudo lsof -ti tcp:8080
 echo "http-server started with PID: $HTTP_SERVER_PID" | tee -a $LOGFILE
 
-source ~/pimoroni/bin/activate
+source "/home/jonathanweston/.virtualenvs/pimoroni/bin/activate"
 echo "Starting first script..." | tee -a $LOGFILE
 
 # Run the first Python script and wait for completion
+cd ~/pi/epaper
 python3 capture-screenshot.py
 
 echo "First script completed. Starting second script..." | tee -a $LOGFILE
@@ -29,5 +30,6 @@ echo "Second script completed." | tee -a $LOGFILE
 echo "Stopping servers..." | tee -a $LOGFILE
 
 # Kill both processes
-kill $NODE_PID $HTTP_SERVER_PID
+kill $NODE_PID
+kill $HTTP_SERVER_PID
 echo "Servers stopped." | tee -a $LOGFILE
