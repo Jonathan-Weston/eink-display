@@ -1,5 +1,6 @@
 import sunnyIcon from '../weather-icons/01d.png';
-import cloudyIcon from '../weather-icons/02d.png';
+import partlyCloudyIcon from '../weather-icons/02d.png';
+import cloudyIcon from '../weather-icons/03d.png';
 import rainyIcon from '../weather-icons/09d.png';
 import stormyIcon from '../weather-icons/11d.png';
 
@@ -7,6 +8,8 @@ export const getWeatherIcon = (weatherCondition: string) => {
     switch (weatherCondition) {
       case 'Clear':
         return sunnyIcon;
+        case 'Partly Cloudy':
+        return partlyCloudyIcon;
       case 'Clouds':
         return cloudyIcon;
       case 'Rain':
