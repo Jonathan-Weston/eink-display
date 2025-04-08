@@ -26,7 +26,7 @@ const BinDisplay: React.FC = () => {
     const [binColor, setBinColor] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
-    const url = process.env.SCRAPE_BIN_DATE_URL;
+    const url = process.env.REACT_APP_BIN_DATE_URL;
 
     useEffect(() => {
         const fetchBinDate = async () => {
