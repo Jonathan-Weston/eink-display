@@ -23,6 +23,17 @@ npx http-server |
 HTTP_SERVER_PID=$(sudo lsof -ti tcp:8080)
 echo "http-server started with PID: $HTTP_SERVER_PID" | tee /dev/fd/3
 
+# Log the start of the sleep with a loading bar
+echo "**************************************************" | tee /dev/fd/3
+echo "Sleeping for 60 seconds at: $(date '+%Y-%m-%d %H:%M:%S')" | tee /dev/fd/3
+echo -n "Progress: " | tee /dev/fd/3
+for i in {1..60}; do
+    echo -n "#" | tee /dev/fd/3
+    sleep 1
+done
+echo "" | tee /dev/fd/3
+echo "**************************************************" | tee /dev/fd/3
+
 source "/home/jonathanweston/.virtualenvs/pimoroni/bin/activate"
 echo "Capturing Screenshot..." | tee /dev/fd/3
 
