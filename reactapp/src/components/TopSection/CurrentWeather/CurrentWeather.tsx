@@ -3,10 +3,8 @@ import styles from './CurrentWeather.module.css';
 import WeatherDetailItem from './WeatherDetailItem/WeatherDetailItem';
 import windIcon from '../../../weather-icons/wind.png';
 import humidityIcon from '../../../weather-icons/humidity.png';
-import pressureIcon from '../../../weather-icons/pressure.png';
 import uvIcon from '../../../weather-icons/uvi.png';
 import visibilityIcon from '../../../weather-icons/visibility.png';
-import airQualityIcon from '../../../weather-icons/aqi.png';
 import sunRiseIcon from '../../../weather-icons/sunrise.png';
 import sunSetIcon from '../../../weather-icons/sunset.png';
 
@@ -45,14 +43,6 @@ export const CurrentWeather: React.FC = () => {
 
   const API_KEY = process.env.REACT_APP_API_KEY; // Replace with your WeatherAPI key
   const CITY = 'Worthing'; // You can change this city if needed
-
-  const getAirQualityValue = (value: number) => {
-    if (value <= 3) return 'Low';
-    if (value <= 6) return 'Moderate';
-    if (value <= 9) return 'High';
-    if (value <= 10) return 'Moderate';
-    return 'Hazardous';
-  };
 
   useEffect(() => {
     const fetchWeatherData = async () => {
