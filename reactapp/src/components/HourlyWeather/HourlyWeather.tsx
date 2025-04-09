@@ -50,10 +50,6 @@ const HourlyTemperatureChart = () => {
     const minTemp = Math.min(...temperatures);
     let maxTemp = Math.max(...temperatures);
 
-    if (maxTemp - minTemp < 4) {
-      maxTemp += 2;
-    }
-
     chartInstance.current = new Chart(ctx, {
       data: {
         labels,
@@ -61,7 +57,7 @@ const HourlyTemperatureChart = () => {
           type: 'line',
           label: 'Hourly Temperature',
           data: temperatures,
-          borderColor: 'rgba(241, 122, 36, 0.9)', // Line color
+          borderColor: 'rgba(255, 106, 0, 0.9)', // Line color
           borderWidth: 2,
           pointRadius: 0, // Hide points
           fill: true, // Enable filling the area under the line
@@ -133,7 +129,7 @@ const HourlyTemperatureChart = () => {
       
       if (gradientStart !== undefined && gradientEnd !== undefined) {
         tempGradient = ctx.createLinearGradient(0, gradientStart, 0, gradientEnd + 10);
-        tempGradient.addColorStop(0, 'rgba(252,204,5, 0.9)');
+        tempGradient.addColorStop(0, 'rgb(255, 204, 1)');
         tempGradient.addColorStop(1, 'rgba(252,204,5, 0.01)');
         precipitationGradient = ctx.createLinearGradient(0, gradientStart, 0, gradientEnd);
         precipitationGradient.addColorStop(0, 'rgba(26, 111, 176, 0.9)'); // Top of the gradient (max temperature)

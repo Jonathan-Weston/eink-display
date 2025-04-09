@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import style from './DailyAndWeeklyWeather.module.css';
 import ForecastItem from './ForecastItem/ForecastItem';
-import { getWeatherIcon } from '../../utils/Helper';
 
 interface ForecastDay {
   date: string;
@@ -11,6 +10,7 @@ interface ForecastDay {
     daily_chance_of_rain: number;
     condition: {
       text: string;
+      icon: string;
     };
   };
 }
@@ -57,7 +57,6 @@ export const DailyAndWeeklyWeather = () => {
     return <div>Error: {error}</div>;
   }
 
-
   return (
     <div className={style.bottom}>
       <div className={`${style.forecast} ${style.forecastWeek}`}>
@@ -65,8 +64,8 @@ export const DailyAndWeeklyWeather = () => {
           {weeklyForecast.slice(1).map((day) => (
             <ForecastItem
               key={day.date}
-              img={getWeatherIcon(day.day.condition.text)} // Use the WeatherAPI icon URL
-              day={new Date(day.date).toLocaleDateString('gb-UK', { weekday: 'short' })} // Format day (e.g., "Tue")
+              img={`https:${day.day.condition.icon}`} // Use the WeatherAPI icon URL
+              day={new Date(day.date).toLocaleDateString('en-GB', { weekday: 'short' })} // Format day (e.g., "Tue")
               maxTempValue={day.day.maxtemp_c.toFixed(0)} // Max temperature
               minTempValue={day.day.mintemp_c.toFixed(0)} // Min temperature
               percipitationValue={`${day.day.daily_chance_of_rain}`} // Chance of rain

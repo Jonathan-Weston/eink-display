@@ -24,11 +24,11 @@
 .forecastItemValueMinor {
   margin-right: 2px;
   font-size: 0.5rem;
-  color: #666;
+  color: #2c2c2c;
 }
 
 .forecastItemUnitMinor {
   font-size: 0.5rem;
   position: relative;
-  color: #666;
+  color: #2c2c2c;
 }

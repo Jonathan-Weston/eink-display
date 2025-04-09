@@ -9,25 +9,27 @@ import visibilityIcon from '../../../weather-icons/visibility.png';
 import airQualityIcon from '../../../weather-icons/aqi.png';
 import sunRiseIcon from '../../../weather-icons/sunrise.png';
 import sunSetIcon from '../../../weather-icons/sunset.png';
-import { getWeatherIcon } from '../../../utils/Helper';
 
 interface WeatherData {
   current: {
-    temp_c: number;
-    condition: {
-      icon: string;
-    };
-    wind_mph: number;
-    humidity: number;
     pressure_mb: number;
-    uv: number;
-    vis_km: number;
     air_quality: {
       "gb-defra-index": number;
     };
   };
   forecast: {
     forecastday: {
+      day: {
+        avgtemp_c: number;
+        maxwind_mph: number;
+        avghumidity: number;
+        avgvis_miles: number;
+        uv: number;
+        condition: {
+          text: string;
+          icon: string;
+        }
+      }
       astro: {
         sunrise: string;
         sunset: string;
@@ -50,7 +52,7 @@ export const CurrentWeather: React.FC = () => {
     if (value <= 9) return 'High';
     if (value <= 10) return 'Moderate';
     return 'Hazardous';
-  }
+  };
 
   useEffect(() => {
     const fetchWeatherData = async () => {
@@ -90,16 +92,16 @@ export const CurrentWeather: React.FC = () => {
     <div id="container" className={styles['Container']}>
       <div className={styles['CurrentWeather-summary']}>
         <div id="currentWeatherImage" className={styles['CurrentWeather-icon']}>
-          {weather?.current && (
+          {weather?.forecast.forecastday[0]?.day?.condition?.icon && (
             <img
-              src={getWeatherIcon(weather.current.condition.icon)} // Use WeatherAPI icon URL
-              alt="Weather Icon"
+              src={`https:${weather.forecast.forecastday[0].day.condition.icon}`} // Use WeatherAPI icon URL
+              alt={weather.forecast.forecastday[0].day.condition.text || 'Weather Icon'}
             />
           )}
         </div>
         <div className={styles['CurrentWeather-temperature']}>
           <span id="current-weather-temperature" className={styles['CurrentWeather-temperature-value']}>
-            {weather?.current.temp_c.toFixed(0)}
+            {weather?.forecast.forecastday[0].day.avgtemp_c.toFixed(0) || ''}
           </span>
           <span className={styles['CurrentWeather-temperature-unit']}>°C</span>
         </div>
@@ -110,54 +112,40 @@ export const CurrentWeather: React.FC = () => {
             label="Sunrise"
             value={weather?.forecast.forecastday[0].astro.sunrise || ''}
             icon={sunRiseIcon}
-            altText='Sunrise Icon'
-          />  
+            altText="Sunrise Icon"
+          />
           <WeatherDetailItem
             label="Sunset"
             value={weather?.forecast.forecastday[0].astro.sunset || ''}
             icon={sunSetIcon}
-            altText='Sunset Icon'
-          />  
+            altText="Sunset Icon"
+          />
           <WeatherDetailItem
             label="Wind"
-            value={weather?.current.wind_mph.toFixed(0) || ''}
+            value={weather?.forecast.forecastday[0].day.maxwind_mph.toFixed(0) || ''}
             unit="mph"
             icon={windIcon} // Use local wind icon
             altText="Wind Icon"
           />
           <WeatherDetailItem
             label="Humidity"
-            value={weather?.current.humidity || ''}
+            value={weather?.forecast.forecastday[0].day.avghumidity || ''}
             unit="%"
             icon={humidityIcon} // Use local humidity icon
             altText="Humidity Icon"
           />
           <WeatherDetailItem
-            label="Pressure"
-            value={weather?.current.pressure_mb || ''}
-            unit="mb"
-            icon={pressureIcon} // Use local pressure icon
-            altText="Pressure Icon"
-          />
-          <WeatherDetailItem
             label="UV Index"
-            value={weather?.current.uv || ''}
+            value={weather?.forecast.forecastday[0].day.uv || ''}
             icon={uvIcon} // Use local UV index icon
             altText="UV Index Icon"
           />
           <WeatherDetailItem
             label="Visibility"
-            value={weather?.current.vis_km || ''}
+            value={weather?.forecast.forecastday[0].day.avgvis_miles || ''}
             unit="km"
             icon={visibilityIcon} // Use local visibility icon
             altText="Visibility Icon"
-          />
-          <WeatherDetailItem
-            label="Air Quality (PM2.5)"
-            value={weather?.current.air_quality['gb-defra-index'] || ''}
-            unit={getAirQualityValue(weather?.current.air_quality['gb-defra-index'] || 0)}
-            icon={airQualityIcon} // Use local air quality icon
-            altText="Air Quality Icon"
           />
         </ul>
       </div>

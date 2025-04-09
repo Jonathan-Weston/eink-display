@@ -16,9 +16,9 @@ root.render(
     <body id="main-container" style={{ width: "600px", height: "448px", overflow: "hidden" }}>
       <main className={styles.container}>
         <Header date={new Date()}></Header>
-        <MainBody></MainBody>
+        <MainBody />
         <HourlyWeather />
-        <DailyAndWeeklyWeather></DailyAndWeeklyWeather>
+        <DailyAndWeeklyWeather />
         
       </main>
     </body>
