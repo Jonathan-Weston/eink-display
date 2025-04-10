@@ -19,7 +19,7 @@ def capture_screenshot(url, output_file):
     try:
         # Open the React app URL
         driver.get(url)
-        
+        time.sleep(20) # Wait for the page to load completely
         # Find the element by its CSS selector
         element = driver.find_element(By.ID, 'main-container')
 
