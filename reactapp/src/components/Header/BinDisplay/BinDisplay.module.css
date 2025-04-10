@@ -20,20 +20,18 @@
     padding-top: 2em; 
 }
 
-/* .binImage {
-    width: 100%;
-    height: auto;
-    max-width: 8rem
-} */
+.binImage {
+    padding-top: 0.6rem;
+}
 
 .binImage img {
     width: 100%;
     height: auto;
-    max-width: 2rem
+    max-width: 3rem
 }
 
 .binDate {
-    font-size: 1rem; /* Adjust font size for readability */
+    font-size: 1.1rem; /* Adjust font size for readability */
     color: #333; 
 }
 

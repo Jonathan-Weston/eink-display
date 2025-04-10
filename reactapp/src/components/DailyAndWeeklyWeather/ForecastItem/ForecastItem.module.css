@@ -4,7 +4,8 @@
   align-items: center;
   width: 3rem;
   border-radius: 1rem;
-  background-color: bisque;
+  border-style: solid;
+  /* background-color: rgba(86, 86, 86, 0.448); */
 }
 
 .forecastItemIconContainer {
@@ -21,7 +22,7 @@
 }
 
 .minTemp {
-  font-size: 0.8rem; /* Slightly smaller font size */
+  font-size: 1rem; /* Slightly smaller font size */
   color: #494949; /* Grey color for minTempValue */
 }
 

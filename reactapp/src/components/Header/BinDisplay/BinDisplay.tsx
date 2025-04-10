@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import binBlueImage from './img/blue_bin.png';
 import binBlackImage from './img/black_bin.png';
 import defaultBinImage from './img/default_bin.png';
+import binBlueWarningImage from './img/blue_bin_warning.png';
+import binBlackWarningImage from './img/black_bin_warning.png';
 import style from './BinDisplay.module.css';
 import { formatDate } from '../../../utils/Helper';
 
@@ -60,12 +62,32 @@ const BinDisplay: React.FC = () => {
     }, [url]);
 
     const getBinImage = () => {
+        if (!nextBinDate || !binColor) {
+            return defaultBinImage; // Default image if no date or color is set
+        }
+    
+        const today = new Date();
+        const binDate = new Date(nextBinDate);
+    
+        // Check if today is the day before the bin date
+        const isDayBefore = (binDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) <= 1;
+    
+        if (isDayBefore) {
+            if (binColor === 'Blue') {
+                return binBlueWarningImage; // Warning image for blue bin
+            } else if (binColor === 'Grey') {
+                return binBlackWarningImage; // Warning image for black bin
+            }
+        }
+    
+        // Default bin images
         if (binColor === 'Blue') {
             return binBlueImage;
         } else if (binColor === 'Grey') {
             return binBlackImage;
         }
-        return defaultBinImage; // Default to blue if no color is set
+    
+        return defaultBinImage; // Default image if no color matches
     };
 
     return (

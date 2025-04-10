@@ -26,7 +26,7 @@ echo "http-server started with PID: $HTTP_SERVER_PID" | tee /dev/fd/3
 # Log the start of the sleep with a loading bar
 echo "Sleeping for 60 seconds at: $(date '+%Y-%m-%d %H:%M:%S')" | tee /dev/fd/3
 echo -n "Progress: " | tee /dev/fd/3
-for i in {1..120}; do
+for i in {1..60}; do
     echo -n "#" | tee /dev/fd/3
     sleep 1
 done
