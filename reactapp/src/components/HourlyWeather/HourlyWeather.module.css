@@ -1,8 +1,8 @@
 .hourlyWeatherContainer {
     width: 100%; /* Make the container span the full width */
-    max-width: 575px; /* Limit the maximum width */
+    max-width: 570px; /* Limit the maximum width */
     margin: 0 auto;
-    height:100px;
+    height:80px;
     /* padding-top: 0.3rem; Center the container */
   
     /* border-radius: 8px; /* Rounded corners */

@@ -22,7 +22,7 @@ const HourlyTemperatureChart = () => {
         const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=Worthing&hours=12`);
         const data = await response.json();
         const forecast = data.forecast.forecastday[0].hour.map((hour: { time: string; temp_c: any; precip_mm: any; }) => ({
-          time: hour.time.split(" ")[1],
+          time: hour.time.split(" ")[1].split(":")[0],
           temperature: hour.temp_c,
           precip_mm: hour.precip_mm,
         }));

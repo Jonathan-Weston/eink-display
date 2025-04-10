@@ -1,7 +1,7 @@
 .WeatherDetails {
   display: grid; /* Use grid layout for details */
   grid-template-columns: repeat(2, 1fr); /* Create two columns */
-  gap: 1rem; /* Add spacing between grid items */
+  gap: 0.7rem; /* Add spacing between grid items */
   text-align: left;
   }
   
@@ -13,7 +13,7 @@
 }
   
 .WeatherDetails-item p {
-  font-size: 0.6em;
+  font-size: 0.7em;
   margin: unset;
   color: #2c2c2c;
 }
@@ -55,7 +55,7 @@
 }
   
 .WeatherDetails-item-value {
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: bold;
   text-align: left;
 }
