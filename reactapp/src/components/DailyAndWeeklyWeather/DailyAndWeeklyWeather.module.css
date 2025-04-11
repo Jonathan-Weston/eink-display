@@ -17,6 +17,7 @@
   width: 100%; /* Make the forecast section span the full width */
   padding: 1rem; /* Add padding for spacing */
   box-sizing: border-box;
+  padding-top: 0.2rem;
 }
 
 .forecastToday {

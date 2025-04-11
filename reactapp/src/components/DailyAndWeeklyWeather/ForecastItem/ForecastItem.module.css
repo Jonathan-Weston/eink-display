@@ -36,3 +36,7 @@
     color: var(--color-5);
     font-weight: normal;
 }
+
+.forecastItemTime {
+  font-size: 0.8rem;
+}
