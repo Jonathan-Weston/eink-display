@@ -56,6 +56,7 @@ jobs:
           host: ${{ secrets.PI_HOST }}
           username: ${{ secrets.PI_USER }}
           key: ${{ secrets.PI_SSH_KEY }}
+          port: ${{ secrets.PI_SSH_PORT }}
           source: "scraping/*"
           target: "~/pi/"
 
@@ -65,6 +66,7 @@ jobs:
           host: ${{ secrets.PI_HOST }}
           username: ${{ secrets.PI_USER }}
           key: ${{ secrets.PI_SSH_KEY }}
+          port: ${{ secrets.PI_SSH_PORT }}
           script: |
             echo "Deploying on Raspberry Pi..."
             chmod +x ~/pi/epaper/update-screen.sh
