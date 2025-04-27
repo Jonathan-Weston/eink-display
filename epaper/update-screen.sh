@@ -1,6 +1,9 @@
 #!/bin/bash
 
 LOGFILE="server_log.log"
+
+sudo cpufreq-set -g performance
+
 exec 3>&1 1>> >(while read line; 
     do echo "[$(date '+%Y-%m-%d %H:%M:%S')] $line"; 
     done >> $LOGFILE) 2>&1
@@ -53,5 +56,7 @@ HTTP_SERVER_PID=$(sudo lsof -ti tcp:8080)
 kill $HTTP_SERVER_PID | tee /dev/fd/3
 echo "PID For Port 8080 searched for result = $(sudo lsof -ti tcp:8080)" | tee /dev/fd/3
 echo "Servers stopped." | tee /dev/fd/3
+
+sudo cpufreq-set -g powersave
 
 exit 0;
