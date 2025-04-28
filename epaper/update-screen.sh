@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOGFILE="server_log.log"
+LOGFILE="~/pi/server_log.log"
 
 sudo cpufreq-set -g performance
 
