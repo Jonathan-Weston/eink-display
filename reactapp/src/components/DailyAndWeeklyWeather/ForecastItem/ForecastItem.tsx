@@ -22,7 +22,7 @@ export const ForecastItem = ({img, day, maxTempValue, minTempValue, percipitatio
             src={img} alt=''></img>
         </div>
         <div id ="forecast-5days-item-0-time" className={styles.forecastItemTime}>{day}</div>
-        <ForecastItemValue value={percipitationValue} unit={"%"}></ForecastItemValue>
+        <ForecastItemValue value={percipitationValue} unit={"mm"}></ForecastItemValue>
     </div>
 
 export default ForecastItem;
