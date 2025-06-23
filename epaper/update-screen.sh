@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOGFILE="~/pi/server_log.log"
+LOGFILE="server_log.log"
 
 sudo cpufreq-set -g performance
 
@@ -35,7 +35,7 @@ for i in {1..60}; do
 done
 
 source "/home/jonathanweston/.virtualenvs/pimoroni/bin/activate"
-echo "Capturing Screenshot..." | tee /dev/fd/3
+echo "\nCapturing Screenshot..." | tee /dev/fd/3
 
 # Run the first Python script and wait for completion
 cd ~/pi/epaper

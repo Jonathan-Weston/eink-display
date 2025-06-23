@@ -12,17 +12,17 @@ app.use(cors());
 // extract dates from the tables rows and map to colour of bin
 const extractDates = (tables) => {
   result =[];
-  const colorRegex = /(\w+)(?=(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday) \d{2} \w{3} \d{4})/;  // Matches the color before the date
-  const dateRegex = /\d{2} \w{3} \d{4}/g; // Matches dates in the format "02 Apr 2025"
+  const colorRegex = /(Blue|Grey|Green)/;
+  const dateRegex = /(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday) \d{1,2}(st|nd|rd|th)? \b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|(Nov|Dec)(?:ember)?)/; 
 
   tables.forEach((item) => {
     const colorMatch = item.match(colorRegex);
-    const dateMatches = item.match(dateRegex);
+    const dateMatch = item.match(dateRegex);
     
     //if color and date present but not green bins push to result
-    if (colorMatch && dateMatches && colorMatch[0] !== 'Green') {
-      dateMatches.forEach((date) => {
-        result.push({ color: colorMatch[1], date });
+    if (colorMatch && dateMatch && colorMatch[0] !== 'Green') {
+      dateMatch.forEach((date) => {
+        result.push({ color: colorMatch[0], date: dateMatch[0] });
       });
     }
   });
@@ -33,13 +33,13 @@ const extractDates = (tables) => {
 // Scrape the bin collection date from the website
 app.get('/scrape-bin-date', async (req, res) => {
   try {
-    const { data } = await axios.get('https://www.adur-worthing.gov.uk/bin-day/?brlu-selected-address=100062209115&return-url=%2Fbin-day%2F');
+    const { data } = await axios.get('https://www.adur-worthing.gov.uk/bin-day/?brlu-selected-address=100061897141&return-url=%2Fbin-day%2F');
     const $ = cheerio.load(data);
 
     const tables = [];
-    $('tr').each((_idx, el) => {
-	    const table = $(el).text();
-	    tables.push(table);
+    $('.bin-collection-listing-row').each((_idx, el) => {
+	    const text = $(el).text().trim();
+	    tables.push(text);
     });
     
     const dates = extractDates(tables);
